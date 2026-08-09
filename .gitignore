@@ -1,0 +1,79 @@
+# Python environments, caches, and tooling
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.code-workspace
+
+# Local configuration, credentials, and logs
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.log
+logs/
+
+# Local galleries, generated indexes, thumbnails, and exports
+gallery-data/
+local-data/
+data/
+output/
+outputs/
+input/
+images/
+thumbnails/
+cache/
+exports/
+*.sqlite
+*.sqlite3
+*.db
+*.tmp
+
+# Image, video, and model assets are intentionally never published by default.
+# If the project later needs a small public demo asset, explicitly force-add it
+# after confirming it contains no personal data or embedded metadata.
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.avif
+*.heic
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+
+# Image metadata and ComfyUI workflow/prompt exports
+*.metadata.json
+*.workflow.json
+*.prompt.json

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ComfyUI LoRA Gallery</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">CL</div>
+        <div>
+          <h1>LoRA Gallery</h1>
+          <p>ComfyUI metadata browser</p>
+        </div>
+      </div>
+
+      <div class="stats" id="stats"></div>
+
+      <label class="field-label" for="loraSearch">Filter LoRAs</label>
+      <input id="loraSearch" class="input" type="search" placeholder="Search LoRA name..." autocomplete="off" />
+
+      <div class="filter-mode">
+        <span>Selected LoRAs</span>
+        <select id="matchMode" class="select" aria-label="LoRA matching mode">
+          <option value="any">Match any</option>
+          <option value="all">Match all</option>
+        </select>
+      </div>
+
+      <div id="loraList" class="lora-list"></div>
+    </aside>
+
+    <main class="main">
+      <header class="toolbar">
+        <div class="toolbar-left">
+          <input id="imageSearch" class="input image-search" type="search" placeholder="Search filenames or LoRAs..." />
+          <select id="sortBy" class="select">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="name">Name A-Z</option>
+            <option value="loras">Most LoRAs</option>
+          </select>
+        </div>
+        <div class="toolbar-right">
+          <span id="visibleCount" class="visible-count"></span>
+          <button id="clearFilters" class="button secondary" type="button">Clear filters</button>
+          <button id="rescan" class="button" type="button">Rescan folder</button>
+        </div>
+      </header>
+
+      <div id="scanStatus" class="scan-status hidden" aria-live="polite">
+        <div class="scan-row">
+          <strong id="scanLabel">Scanning images...</strong>
+          <span id="scanNumbers"></span>
+        </div>
+        <div class="scan-track"><div id="scanBar" class="scan-bar"></div></div>
+        <div id="scanFile" class="scan-file"></div>
+      </div>
+
+      <div id="activeFilters" class="active-filters"></div>
+      <section id="gallery" class="gallery" aria-live="polite"></section>
+      <div id="empty" class="empty hidden">
+        <strong>No images match these filters.</strong>
+        <span>Try clearing a LoRA or filename filter.</span>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="modal" class="modal">
+    <button id="modalClose" class="modal-close" aria-label="Close">&times;</button>
+    <div class="modal-grid">
+      <div class="modal-image-wrap">
+        <img id="modalImage" alt="Selected image" />
+      </div>
+      <div class="modal-info">
+        <h2 id="modalTitle"></h2>
+        <div id="modalMeta" class="meta-line"></div>
+        <h3>LoRAs</h3>
+        <div id="modalLoras" class="modal-loras"></div>
+        <div class="detail-actions">
+          <button id="copyLoras" class="button secondary" type="button">Copy LoRA list</button>
+        </div>
+        <details class="metadata-details">
+          <summary>Embedded metadata</summary>
+          <pre id="metadataJson"></pre>
+        </details>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
